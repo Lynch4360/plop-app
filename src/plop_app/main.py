@@ -8,3 +8,7 @@ bp = Blueprint("main", __name__)
 @bp.route("/")
 def runs():
     return render_template("main/runs.html")
+
+@bp.route("/analysis")
+def analysis():
+    return render_template("main/analysis.html")
