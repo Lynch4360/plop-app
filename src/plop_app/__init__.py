@@ -1,10 +1,7 @@
-from flask import Flask, render_template
+from flask import Flask
+from plop_app.main import bp as main_bp
 
 def create_app() -> Flask:
     app = Flask(__name__)
-
-    @app.route("/")
-    def index():
-        return render_template("index.html")
-    
+    app.register_blueprint(main_bp)
     return app
