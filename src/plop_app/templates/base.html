@@ -9,6 +9,10 @@
 <body>
   <header class="site-header">
     <span class="site-name">Receipt &amp; Invoice Extraction</span>
+      <nav>
+          <a href="{{ url_for('main.runs') }}" class="{{ 'active' if request.endpoint == 'main.runs' }}">Runs</a>
+          <a href="{{ url_for('main.analysis') }}" class="{{ 'active' if request.endpoint == 'main.analysis' }}">Analysis</a>
+      </nav>
   </header>
 
   <main class="page">

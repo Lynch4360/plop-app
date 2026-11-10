@@ -25,3 +25,26 @@ body {
 .site-footer {
   color: #5B6270;
 }
+.site-footer {
+  color: #5B6270;
+}
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+nav a {
+  color: #3B4250;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+nav a.active {
+  background: #EAF0FB;
+  color: #1A3F91;
+  font-weight: bold;
+}
