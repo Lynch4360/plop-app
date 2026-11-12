@@ -22,7 +22,7 @@
       <tbody>
         {% for run in runs %}
           <tr>
-            <td>{{ run.name }}</td>
+            <td><a href="{{ url_for('main.run_detail', run_id=run.id) }}">{{ run.name }}</a></td>
             <td>{{ run.created_at.strftime("%d %b %Y, %H:%M") }}</td>
             <td>{{ run.documents | length }}</td>
           </tr>

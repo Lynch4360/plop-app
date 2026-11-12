@@ -41,6 +41,12 @@ def create_run():
     return redirect(url_for("main.runs"))
 
 
+@bp.route("/runs/<int:run_id>")
+def run_detail(run_id):
+    run = db.get_or_404(Run, run_id)
+    return render_template("main/run.html", run=run)
+
+
 @bp.route("/analysis")
 def analysis():
     return render_template("main/analysis.html")
