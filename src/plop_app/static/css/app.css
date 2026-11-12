@@ -76,3 +76,21 @@ th {
   background: #F3F5F8;
   border-top: 0;
 }
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
+.upload button {
+  align-self: flex-start;
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #2457C5;
+  color: #FFFFFF;
+  font-weight: bold;
+}

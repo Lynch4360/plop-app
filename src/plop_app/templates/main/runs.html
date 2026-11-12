@@ -4,6 +4,16 @@
   <h1>Runs</h1>
   <p class="muted">Each run is one batch of receipts and invoices.</p>
 
+  <form class="card upload" method="post" action="{{ url_for('main.create_run') }}" enctype="multipart/form-data">
+    <label for="name">Run name</label>
+    <input id="name" name="name" placeholder="e.g. Example documents">
+
+    <label for="files">Documents</label>
+    <input id="files" name="files" type="file" accept="image/*,.pdf" multiple>
+
+    <button type="submit">Upload</button>
+  </form>
+
   <div class="card">
     <table>
       <thead>
