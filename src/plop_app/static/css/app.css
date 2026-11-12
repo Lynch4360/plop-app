@@ -48,3 +48,31 @@ nav a.active {
   color: #1A3F91;
   font-weight: bold;
 }
+
+.muted {
+  color: #5B6270;
+}
+
+.card {
+  background: #FFFFFF;
+  border: 1px solid #DDE1E7;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 16px;
+  border-top: 1px solid #E8EBF0;
+}
+
+th {
+  background: #F3F5F8;
+  border-top: 0;
+}
