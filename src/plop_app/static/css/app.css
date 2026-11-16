@@ -131,3 +131,25 @@ th {
   color: #5B6270;
   word-break: break-all;
 }
+
+input,
+button {
+  font-size: 16px;
+}
+
+.upload input,
+.upload button {
+  min-height: 44px;
+}
+
+@media (max-width: 600px) {
+  .site-header {
+    padding: 12px 16px;
+    gap: 8px;
+  }
+
+  .page,
+  .site-footer {
+    padding: 16px;
+  }
+}
