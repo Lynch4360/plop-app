@@ -32,7 +32,7 @@ def create_run():
     db.session.add(run)
     db.session.flush()
 
-    upload_dir = Path(current_app.instance_path) / "uploads" / str(run.id)
+    upload_dir = Path(current_app.config["UPLOAD_FOLDER"]) / str(run.id)
     upload_dir.mkdir(parents=True, exist_ok=True)
 
     for file in request.files.getlist("files"):
@@ -57,8 +57,7 @@ def run_detail(run_id):
 @bp.route("/documents/<int:document_id>/file")
 def document_file(document_id):
     document = db.get_or_404(Document, document_id)
-    uploads = Path(current_app.instance_path) / "uploads"
-    return send_from_directory(uploads, document.stored_path)
+    return send_from_directory(current_app.config["UPLOAD_FOLDER"], document.stored_path)
 
 @bp.route("/analysis")
 def analysis():
