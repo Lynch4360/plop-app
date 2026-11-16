@@ -5,21 +5,19 @@
   <h1>{{ run.name }}</h1>
   <p class="muted">{{ run.documents | length }} documents · added {{ run.created_at.strftime("%d %b %Y, %H:%M") }}</p>
 
-  <div class="card">
-    <table>
-      <thead>
-        <tr><th>#</th><th>File</th></tr>
-      </thead>
-      <tbody>
-        {% for document in run.documents %}
-          <tr>
-            <td>{{ loop.index }}</td>
-            <td>{{ document.filename }}</td>
-          </tr>
+<div class="thumbs">
+    {% for document in run.documents %}
+      {% set file_url = url_for('main.document_file', document_id=document.id) %}
+      <figure class="card">
+        {% if document.filename.lower().endswith(".pdf") %}
+          <a class="pdf" href="{{ file_url }}">PDF</a>
         {% else %}
-          <tr><td colspan="2" class="muted">No documents in this run.</td></tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+          <a href="{{ file_url }}"><img src="{{ file_url }}" alt="{{ document.filename }}"></a>
+        {% endif %}
+        <figcaption>{{ document.filename }}</figcaption>
+      </figure>
+    {% else %}
+      <p class="muted">No documents in this run.</p>
+    {% endfor %}
+</div>
 {% endblock %}

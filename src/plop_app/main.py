@@ -1,7 +1,14 @@
 import uuid
 from pathlib import Path
 
-from flask import Blueprint, current_app, redirect, render_template, request, url_for
+from flask import (
+    Blueprint, current_app,
+    redirect,
+    render_template,
+    request,
+    url_for,
+    send_from_directory
+)
 
 from plop_app.extensions import db
 from plop_app.models import Run, Document
@@ -46,6 +53,12 @@ def run_detail(run_id):
     run = db.get_or_404(Run, run_id)
     return render_template("main/run.html", run=run)
 
+
+@bp.route("/documents/<int:document_id>/file")
+def document_file(document_id):
+    document = db.get_or_404(Document, document_id)
+    uploads = Path(current_app.instance_path) / "uploads"
+    return send_from_directory(uploads, document.stored_path)
 
 @bp.route("/analysis")
 def analysis():
