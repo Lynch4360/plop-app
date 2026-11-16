@@ -18,10 +18,18 @@ class Run(db.Model):
 
 
 class Document(db.Model):
+
+    PENDING = "pending"
+    NEEDS_REVIEW = "needs_review"
+    APPROVED = "approved"
+
     id = db.Column(db.Integer, primary_key=True)
     run_id = db.Column(db.Integer, db.ForeignKey("run.id"), nullable=False)
     filename = db.Column(db.String(250), nullable=False)
     stored_path = db.Column(db.String(500), nullable=False)
     doc_type = db.Column(db.String(20))
+    status = db.Column(
+        db.String(20), nullable=False, default=PENDING, server_default=PENDING
+    )
 
     run = db.relationship("Run", back_populates="documents")
