@@ -15,6 +15,7 @@
           <a href="{{ file_url }}"><img src="{{ file_url }}" alt="{{ document.filename }}"></a>
         {% endif %}
         <figcaption>{{ document.filename }}</figcaption>
+        <span class="badge badge-{{ document.status }}">{{ document.status.replace("_", " ") }}</span>
       </figure>
     {% else %}
       <p class="muted">No documents in this run.</p>

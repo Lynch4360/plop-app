@@ -48,3 +48,10 @@ def test_unknown_run_returns_404(client):
 
 def test_unknown_document_returns_404(client):
     assert client.get("/documents/999/file").status_code == 404
+
+
+def test_run_page_shows_document_status(client):
+    upload(client, "One file", [("receipt.jpg", b"img")])
+    response = client.get("/runs/1")
+    assert response.status_code == 200
+    assert b"pending" in response.data

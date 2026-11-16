@@ -153,3 +153,27 @@ button {
     padding: 16px;
   }
 }
+
+.badge {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge-pending {
+  background: #EEF0F3;
+  color: #3B4250;
+}
+
+.badge-needs_review {
+  background: #FFF4E5;
+  color: #8A4B08;
+}
+
+.badge-approved {
+  background: #EAF0FB;
+  color: #1A3F91;
+}
