@@ -54,10 +54,18 @@ def run_detail(run_id):
     return render_template("main/run.html", run=run)
 
 
+
+@bp.route("/documents/<int:document_id>")
+def document_detail (document_id):
+    document = db.get_or_404(Document, document_id)
+    return render_template("main/review.html", document=document)
+
+
 @bp.route("/documents/<int:document_id>/file")
 def document_file(document_id):
     document = db.get_or_404(Document, document_id)
     return send_from_directory(current_app.config["UPLOAD_FOLDER"], document.stored_path)
+
 
 @bp.route("/analysis")
 def analysis():

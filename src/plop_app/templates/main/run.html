@@ -10,9 +10,9 @@
       {% set file_url = url_for('main.document_file', document_id=document.id) %}
       <figure class="card">
         {% if document.filename.lower().endswith(".pdf") %}
-          <a class="pdf" href="{{ file_url }}">PDF</a>
+        <a class="pdf" href="{{ url_for('main.document_detail', document_id=document.id) }}">PDF</a>
         {% else %}
-          <a href="{{ file_url }}"><img src="{{ file_url }}" alt="{{ document.filename }}"></a>
+        <a href="{{ url_for('main.document_detail', document_id=document.id) }}"><img src="{{ file_url }}" alt="{{ document.filename }}"></a>
         {% endif %}
         <figcaption>{{ document.filename }}</figcaption>
         <span class="badge badge-{{ document.status }}">{{ document.status.replace("_", " ") }}</span>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% set file_url = url_for('main.document_file', document_id=document.id) %}
+  <p><a href="{{ url_for('main.run_detail', run_id=document.run_id) }}">← {{ document.run.name }}</a></p>
+  <h1>{{ document.filename }}</h1>
+  <p><span class="badge badge-{{ document.status }}">{{ document.status.replace("_", " ") }}</span></p>
+
+  <div class="review">
+    <div class="card review-image">
+      {% if document.filename.lower().endswith(".pdf") %}
+        <a class="pdf" href="{{ file_url }}">Open PDF</a>
+      {% else %}
+        <a href="{{ file_url }}"><img src="{{ file_url }}" alt="{{ document.filename }}"></a>
+      {% endif %}
+    </div>
+
+    <form class="card review-form">
+      <label for="supplier">Supplier</label>
+      <input id="supplier" name="supplier">
+
+      <label for="vat_number">VAT number</label>
+      <input id="vat_number" name="vat_number">
+
+      <label for="document_date">Date</label>
+      <input id="document_date" name="document_date" type="date">
+
+      <label for="net_amount">Net (€)</label>
+      <input id="net_amount" name="net_amount" type="number" step="0.01" inputmode="decimal">
+
+      <label for="vat_amount">VAT (€)</label>
+      <input id="vat_amount" name="vat_amount" type="number" step="0.01" inputmode="decimal">
+
+      <label for="total_amount">Total (€)</label>
+      <input id="total_amount" name="total_amount" type="number" step="0.01" inputmode="decimal">
+    </form>
+  </div>
+{% endblock %}
