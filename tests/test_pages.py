@@ -55,3 +55,13 @@ def test_run_page_shows_document_status(client):
     response = client.get("/runs/1")
     assert response.status_code == 200
     assert b"pending" in response.data
+
+def test_review_page_shows_document(client):
+    upload(client, "One file", [("receipt.jpg", b"img")])
+    response = client.get("/documents/1")
+    assert response.status_code == 200
+    assert b"receipt.jpg" in response.data
+    assert b'name="total_amount"' in response.data
+
+def test_unknown_document_review_returns_404(client):
+    assert client.get("/documents/999").status_code == 404
