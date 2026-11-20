@@ -177,3 +177,36 @@ button {
   background: #EAF0FB;
   color: #1A3F91;
 }
+
+.review {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.review-image {
+  padding: 8px;
+}
+
+.review-image img {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+.review-form input {
+  min-height: 44px;
+  padding: 0 10px;
+  border: 1px solid #C4CAD3;
+  border-radius: 6px;
+}
