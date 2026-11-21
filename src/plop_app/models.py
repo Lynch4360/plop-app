@@ -32,4 +32,13 @@ class Document(db.Model):
         db.String(20), nullable=False, default=PENDING, server_default=PENDING
     )
 
+    # Reviewed values: what human review confirms storing all money figures in cents
+    # all of these are optional because they are empty until someone reviews
+    supplier = db.Column(db.String(200))
+    vat_number = db.Column(db.String(20))
+    document_date = db.Column(db.Date)
+    net_cents = db.Column(db.Integer)
+    vat_cents = db.Column(db.Integer)
+    total_cents = db.Column(db.Integer)
+
     run = db.relationship("Run", back_populates="documents")
